@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
         else
             render json: { error: "Review not found" }, status: :not_found 
         end
+    end
 
     private 
 
