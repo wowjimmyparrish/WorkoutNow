@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    skip_before_action :authorize, only: [:index, :show]
 
     def index 
         reviews = Review.all 
