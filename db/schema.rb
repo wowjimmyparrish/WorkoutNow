@@ -10,25 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_03_15_234520) do
+ActiveRecord::Schema.define(version: 2023_03_26_223641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.string "director"
-    t.string "genre"
-    t.integer "year"
-    t.string "image_url"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.string "comment"
     t.integer "rating"
-    t.integer "movie_id"
+    t.integer "workout_id"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -37,6 +27,15 @@ ActiveRecord::Schema.define(version: 2023_03_15_234520) do
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password_digest"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "workouts", force: :cascade do |t|
+    t.string "title"
+    t.string "focus"
+    t.integer "length"
+    t.string "workout"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
