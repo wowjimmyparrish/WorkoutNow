@@ -1,5 +1,6 @@
 class ReviewsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    before_action :authorize
     skip_before_action :authorize, only: [:index, :show]
 
     def index 
@@ -23,7 +24,7 @@ class ReviewsController < ApplicationController
 
     def update 
         review = find_review 
-        spice.update(review_params)
+        review.update!(review_params)
         render json: review, status: :ok
     end 
 
@@ -50,6 +51,10 @@ class ReviewsController < ApplicationController
     def render_unprocessable_entity_response(invalid)
         render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end
+
+    def authorize
+        return render json: { error: "Not authorized" }, status: :unauthorized unless session.include? :user_id
+      end
 
 
 end

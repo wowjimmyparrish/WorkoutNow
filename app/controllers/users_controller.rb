@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-    skip_before_action :authorize, only: :create, :show
-
+    
     def create 
         user = User.create!(user_params)
         session[:user_id] = user.id
@@ -14,7 +13,7 @@ class UsersController < ApplicationController
     private 
 
     def user_params 
-        params.permit(:username, :password)
+        params.permit(:username, :password, :password_confirmation)
     end
     
 end

@@ -1,5 +1,6 @@
 class WorkoutsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    before_action :authorize
     skip_before_action :authorize, only: [:index, :show]
 
     def index 
@@ -21,6 +22,16 @@ class WorkoutsController < ApplicationController
         render json: workout, status: :created 
     end
 
+    def destroy 
+        workout = find_workout
+        if workout
+        workout.destroy 
+        head :no_content 
+        else
+            render json: { error: "Workout not found" }, status: :not_found 
+        end
+    end
+
         private 
 
         def find_workout
@@ -34,4 +45,8 @@ class WorkoutsController < ApplicationController
         def render_unprocessable_entity_response(invalid)
             render json: { errors: invalid.record.errors }, status: :unprocessable_entity
         end
+
+        def authorize
+            return render json: { error: "Not authorized, please log in" }, status: :unauthorized unless session.include? :user_id
+          end
 end

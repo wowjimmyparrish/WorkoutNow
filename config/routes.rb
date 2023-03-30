@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :reviews
 
-  resources :workouts, only: [:show, :index, :create] do
+  resources :workouts, only: [:show, :index, :create, :destroy] do
     resources :reviews, only: [:show, :index] 
   end
 
