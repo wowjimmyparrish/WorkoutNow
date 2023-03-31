@@ -1,8 +1,17 @@
+import { Route, Switch } from "react-router-dom";
+import NavBar from "./NavBar";
+import Home from "./Home";
+
 function App() {
   return (
-    <div>
-      <h1>Fuck</h1>
-    </div>
+    <>
+      <NavBar />
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
