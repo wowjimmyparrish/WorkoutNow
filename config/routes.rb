@@ -2,11 +2,13 @@ Rails.application.routes.draw do
   resources :reviews
 
   resources :workouts, only: [:show, :index, :create, :destroy] do
-    resources :reviews, only: [:show, :index] 
+    resources :reviews, only: [:show, :index]
   end
 
-  resources :users
-
+  resources :users do
+    resources :workouts, only: [:show, :index]
+  end
+  
  post "/signup", to: "users#create"
  get "/me", to: "users#show"
  post "/login", to: "sessions#create"
