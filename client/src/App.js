@@ -1,11 +1,11 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
-import NavBar from "./NavBar";
-import Home from "./Home";
-import Login from "./Login";
-import MyWorkouts from "./MyWorkouts";
-import CreateWorkout from "./CreateWorkout";
+import NavBar from "./components/NavBar";
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import MyWorkouts from "./pages/MyWorkouts";
+import CreateWorkout from "./pages/CreateWorkout";
 
 function App() {
   const [user, setUser] = useState(null);
