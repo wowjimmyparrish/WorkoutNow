@@ -1,10 +1,77 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
 
-function CreateWorkout() {
+function CreateWorkout({ addWorkout, user }) {
+  const [data, setData] = useState({
+    user_id: user.id,
+    title: "",
+    focus: "",
+    length: "",
+    workout: "",
+  });
+  const history = useHistory();
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  };
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("/workouts", requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        addWorkout(data);
+        history.push("/");
+      });
+  }
   return (
-    <>
-      <h1>Create Workout Form</h1>
-    </>
+    <div>
+      <h1>CREATE WORKOUT</h1>
+      <hr></hr>
+      <p>Please submit information below</p>
+      <form className="pet-form">
+        <input
+          className="pet-input"
+          type="text"
+          placeholder="title"
+          value={data.title}
+          required
+          onChange={(e) => setData({ ...data, title: e.target.value })}
+        ></input>
+        <input
+          className="pet-input"
+          type="text"
+          placeholder="focus"
+          value={data.focus}
+          required
+          onChange={(e) => setData({ ...data, focus: e.target.value })}
+        ></input>
+        <input
+          className="pet-input"
+          type="text"
+          placeholder="length"
+          value={data.length}
+          required
+          onChange={(e) => setData({ ...data, length: e.target.value })}
+        ></input>
+        <input
+          className="pet-input"
+          type="text"
+          placeholder="workout"
+          value={data.workout}
+          required
+          onChange={(e) => setData({ ...data, workout: e.target.value })}
+        ></input>
+        <br></br>
+        <button onClick={handleSubmit} type="submit">
+          Submit Now
+        </button>
+      </form>
+    </div>
   );
 }
 

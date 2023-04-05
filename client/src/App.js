@@ -27,12 +27,19 @@ function App() {
 
   if (!user) return <Login onLogin={setUser} />;
 
+  function addWorkout(newWorkout) {
+    setAllWorkouts([...allWorkouts, newWorkout]);
+  }
+
   function addReview(newReview) {
     console.log("newReview", newReview);
     setAllWorkouts((prevAllWorkouts) => {
       return prevAllWorkouts.map((workout) => {
         if (workout.id === newReview.workout_id) {
-          return { ...workout, reviews: [...workout.reviews, newReview] };
+          return {
+            ...workout,
+            reviews: [...workout.reviews, newReview],
+          };
         }
         return workout;
       });
@@ -52,7 +59,7 @@ function App() {
             <MyWorkouts />
           </Route>
           <Route path="/createworkout">
-            <CreateWorkout />
+            <CreateWorkout addWorkout={addWorkout} user={user} />
           </Route>
         </Switch>
       </main>
