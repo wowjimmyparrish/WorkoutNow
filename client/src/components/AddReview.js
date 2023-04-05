@@ -1,0 +1,52 @@
+import { useState } from "react";
+
+function AddReview({ addReview, workout, user }) {
+  const [data, setData] = useState({
+    comment: "",
+    user_id: user.id,
+    workout_id: workout.id,
+  });
+
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  };
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    fetch("/reviews", requestOptions)
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        addReview(data);
+        setData({ comment: "", workout_id: workout.id, user_id: user.id });
+      });
+  }
+
+  return (
+    <div>
+      <form className="comment-form">
+        <input
+          className="input"
+          type="text"
+          placeholder="Comment"
+          value={data.comment}
+          onChange={(e) =>
+            setData({
+              comment: e.target.value,
+              workout_id: workout.id,
+              user_id: user.id,
+            })
+          }
+        ></input>
+        <button type="submit" onClick={handleSubmit}>
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default AddReview;

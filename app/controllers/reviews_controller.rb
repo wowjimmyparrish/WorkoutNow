@@ -45,7 +45,7 @@ class ReviewsController < ApplicationController
     end
 
     def review_params 
-        params.permit(:comment, :rating)
+        params.permit(:comment, :user_id, :workout_id)
     end
     
     def render_unprocessable_entity_response(invalid)

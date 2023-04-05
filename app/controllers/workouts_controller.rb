@@ -34,16 +34,17 @@ class WorkoutsController < ApplicationController
         end
     end 
     
-    # def create 
-        # workout = Workout.create!(workout_params) 
-        # render json: workout, status: :created 
-        def create 
-            user = find_user 
-            workout = user.workouts.create!(workout_params) 
-            render json: workout, status: :created 
-          end
+    def create 
+        workout = Workout.create!(workout_params) 
+        render json: workout, status: :created 
+    end
+        # def create 
+        #     user = find_user 
+        #     workout = user.workouts.create!(workout_params) 
+        #     render json: workout, status: :created 
+        #   end
     
-3
+
     def destroy 
         workout = find_workout
         if workout
@@ -66,7 +67,7 @@ class WorkoutsController < ApplicationController
         end
 
         def workout_params 
-            params.permit(:title, :length, :workout, :focus)
+            params.permit(:title, :length, :workout, :focus, :user_id)
         end
 
         def render_unprocessable_entity_response(invalid)

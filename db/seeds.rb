@@ -15,6 +15,6 @@ Workout.create!(title: "Redwoods", focus: "Lower Body", length: 60, workout: "Sq
 Workout.create!(title: "Tombstone", focus: "Full body", length: 90, workout: "Squats 5 reps x 5 sets, Deadlifts 5 reps x 5 sets, Bench Press 5 reps x 5 sets, Barbell Rows 5 reps x 5 sets, Pullups AMRAP x 3, Military Press 5 reps x 5 sets", user_id: 2)
 Workout.create!(title: "Arm Farm", focus: "Lower Body", length: 45, workout: "Barbell Curls 10 reps x 3 sets, Hammer Curls 10 reps x 3 sets, Skullcrushers 10 reps x 3 sets, Tricep extensions 10 reps x 3 sets", user_id: 2)
 
-Review.create!(comment: "Great workout!", rating: 5, user_id: 1, workout_id: 1) 
-Review.create!(comment: "Bad workout!", rating: 2, user_id: 2, workout_id: 2)
+Review.create!(comment: "Great workout!", user_id: 1, workout_id: 1) 
+Review.create!(comment: "Bad workout!", user_id: 2, workout_id: 2)
 
