@@ -1,7 +1,7 @@
 import React from "react";
 import Reviews from "./Reviews";
 
-function WorkoutCard({ workout, addReview, user }) {
+function WorkoutCard({ workout, addReview }) {
   return (
     <>
       <h3>{workout.title}</h3>
@@ -11,7 +11,6 @@ function WorkoutCard({ workout, addReview, user }) {
         reviews={workout.reviews}
         addReview={addReview}
         workout={workout}
-        user={user}
       />
       {/* Follow pattern from petCard and Comments */}
       {/* <Comments

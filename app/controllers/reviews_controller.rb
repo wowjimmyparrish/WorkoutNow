@@ -4,8 +4,15 @@ class ReviewsController < ApplicationController
     skip_before_action :authorize, only: [:index, :show]
 
     def index 
-        reviews = Review.all 
-        render json: reviews, status: :ok 
+        # reviews = Review.all 
+        # render json: reviews, status: :ok 
+        if params[:user_id]
+            user = find_user
+            reviews = user.reviews
+          else
+          reviews = Review.all
+          end
+          render json: reviews, include: [:user, :workout]
     end 
 
     def show 
@@ -39,6 +46,10 @@ class ReviewsController < ApplicationController
     end
 
     private 
+
+    def find_user
+        User.find_by(id: params[:user_id]) 
+      end 
 
     def find_review
         Review.find_by(id: params[:id]) 

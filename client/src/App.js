@@ -1,14 +1,16 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import MyWorkouts from "./pages/MyWorkouts";
+import MyReviews from "./pages/MyReviews";
 import CreateWorkout from "./pages/CreateWorkout";
+import { UserContext } from "./context/user";
 
 function App() {
-  const [user, setUser] = useState(null);
+  const { user, setUser } = useContext(UserContext);
   const [allWorkouts, setAllWorkouts] = useState([]);
 
   useEffect(() => {
@@ -23,9 +25,8 @@ function App() {
         response.json().then((user) => setUser(user));
       }
     });
-  }, []);
-
-  if (!user) return <Login onLogin={setUser} />;
+  }, [setUser]);
+  if (!user) return <Login />;
 
   function addWorkout(newWorkout) {
     setAllWorkouts([...allWorkouts, newWorkout]);
@@ -48,18 +49,21 @@ function App() {
 
   return (
     <>
-      <NavBar setUser={setUser} />
+      <NavBar />
       <h2>Welcome, {user.username}!</h2>
       <main>
         <Switch>
           <Route exact path="/">
-            <Home allWorkouts={allWorkouts} addReview={addReview} user={user} />
+            <Home allWorkouts={allWorkouts} addReview={addReview} />
           </Route>
           <Route path="/myworkouts">
             <MyWorkouts />
           </Route>
+          <Route path="/myreviews">
+            <MyReviews />
+          </Route>
           <Route path="/createworkout">
-            <CreateWorkout addWorkout={addWorkout} user={user} />
+            <CreateWorkout addWorkout={addWorkout} />
           </Route>
         </Switch>
       </main>

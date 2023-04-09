@@ -1,7 +1,10 @@
 import React from "react";
+import { useContext } from "react";
+import { UserContext } from "../context/user";
 import { NavLink } from "react-router-dom";
 
-function NavBar({ setUser }) {
+function NavBar() {
+  const { setUser } = useContext(UserContext);
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -14,6 +17,7 @@ function NavBar({ setUser }) {
       <div className="navbar">
         <NavLink to="/">Home </NavLink>
         <NavLink to="/myworkouts">My Workouts </NavLink>
+        <NavLink to="/myreviews">My Reviews</NavLink>
         <NavLink to="/createworkout">Create Workout</NavLink>
         <button onClick={handleLogoutClick}>Logout</button>
       </div>

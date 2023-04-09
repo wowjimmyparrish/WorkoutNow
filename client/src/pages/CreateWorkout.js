@@ -1,8 +1,11 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/user";
 
-function CreateWorkout({ addWorkout, user }) {
+function CreateWorkout({ addWorkout }) {
+  const [errors, setErrors] = useState([]);
+  const { user } = useContext(UserContext);
   const [data, setData] = useState({
     user_id: user.id,
     title: "",
@@ -18,16 +21,15 @@ function CreateWorkout({ addWorkout, user }) {
   };
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/workouts", requestOptions)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        addWorkout(data);
-        history.push("/");
-      });
+    fetch("/workouts", requestOptions).then((r) => {
+      if (r.ok) {
+        r.json().then((data) => addWorkout(data), history.push("/"));
+      } else {
+        r.json().then((errorData) => setErrors(errorData.error));
+      }
+    });
   }
+
   return (
     <div>
       <h1>CREATE WORKOUT</h1>
@@ -70,6 +72,7 @@ function CreateWorkout({ addWorkout, user }) {
         <button onClick={handleSubmit} type="submit">
           Submit Now
         </button>
+        <h3 style={{ color: "red" }}>{errors}</h3>
       </form>
     </div>
   );

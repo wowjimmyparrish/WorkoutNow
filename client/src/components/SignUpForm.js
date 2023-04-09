@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/user";
 
-function SignUpForm({ onLogin }) {
+function SignUpForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
+  const { setUser } = useContext(UserContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -20,7 +22,7 @@ function SignUpForm({ onLogin }) {
       }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then(onLogin);
+        r.json().then(setUser);
       } else {
         r.json().then((errorData) => setErrors(errorData.error));
       }

@@ -1,6 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../context/user";
 
-function AddReview({ addReview, workout, user }) {
+function AddReview({ addReview, workout }) {
+  const { user } = useContext(UserContext);
   const [data, setData] = useState({
     comment: "",
     user_id: user.id,

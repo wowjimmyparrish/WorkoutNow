@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :workouts, only: [:show, :index]
   end
+
+  resources :users do
+    resources :reviews, only: [:show, :index]
+  end
+
+  
   
  post "/signup", to: "users#create"
  get "/me", to: "users#show"

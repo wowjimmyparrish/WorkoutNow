@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../context/user";
 
-function LoginForm({ onLogin }) {
+function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const { setUser } = useContext(UserContext);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -15,7 +17,7 @@ function LoginForm({ onLogin }) {
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => setUser(user));
       } else {
         r.json().then((errorData) => setErrors(errorData.error));
       }
