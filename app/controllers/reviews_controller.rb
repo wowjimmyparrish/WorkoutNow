@@ -4,8 +4,6 @@ class ReviewsController < ApplicationController
     skip_before_action :authorize, only: [:index, :show]
 
     def index 
-        # reviews = Review.all 
-        # render json: reviews, status: :ok 
         if params[:user_id]
             user = find_user
             reviews = user.reviews
@@ -48,7 +46,7 @@ class ReviewsController < ApplicationController
     private 
 
     def find_user
-        User.find_by(id: params[:user_id]) 
+        User.find_by(id: session[:user_id]) 
       end 
 
     def find_review

@@ -4,7 +4,10 @@ function MyWorkouts() {
   return (
     <>
       <h1>My Workouts</h1>
-      <p>Make GET request to /workouts and console log data</p>
+      <p>
+        Make GET request to /users/:user_id/workouts or created_workouts and
+        console log data
+      </p>
     </>
   );
 }

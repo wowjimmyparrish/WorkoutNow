@@ -2,7 +2,6 @@ import React from "react";
 import WorkoutCard from "./WorkoutCard";
 
 function WorkoutList({ allWorkouts, addReview }) {
-  console.log("From workoutList component", allWorkouts);
   const workoutArray = allWorkouts.map((workout) => (
     <WorkoutCard key={workout.id} workout={workout} addReview={addReview} />
   ));
