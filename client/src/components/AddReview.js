@@ -25,8 +25,12 @@ function AddReview({ addReview, workout }) {
           setData({ comment: "", workout_id: workout.id, user_id: user.id });
         });
       } else {
-        response.json().then((errorData) => console.log(errorData.errors));
-        // setErrors(errorData.errors));
+        response.json().then((errorData) => {
+          console.log(errorData.errors);
+          setErrors(errorData.errors.user_id);
+          setData({ comment: "", workout_id: workout.id, user_id: user.id });
+          //setErrors(Object.keys(errorData.errors));
+        });
       }
     });
   }
@@ -46,13 +50,15 @@ function AddReview({ addReview, workout }) {
             })
           }
         ></input>
-        <button type="submit" onClick={handleSubmit}>
+        <button type="submit" disabled={!data.comment} onClick={handleSubmit}>
           Submit
         </button>
         {errors.map((error) => (
-          <h3 key={error}>{error}</h3>
+          // <h3 key={error}>{error}</h3>
+          <h3 key={error} style={{ color: "red" }}>
+            {error}
+          </h3>
         ))}
-        <h3 style={{ color: "red" }}>{errors}</h3>
       </form>
     </div>
   );
