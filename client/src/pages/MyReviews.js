@@ -5,17 +5,13 @@ function MyReviews() {
   const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
-    fetch("/users/:user_id/reviews")
+    fetch("/me")
       .then((r) => r.json())
-      .then((data) => setUserReviews(data));
+      .then((data) => setUserReviews(data.reviews));
   }, []);
 
   const userReviewArray = userReviews.map((userReview) => (
-    <UserReviewCard
-      key={userReview.id}
-      comment={userReview.comment}
-      workout={userReview.workout.title}
-    />
+    <UserReviewCard key={userReview.id} comment={userReview.comment} />
   ));
   return (
     <>
