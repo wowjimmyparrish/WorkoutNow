@@ -1,5 +1,6 @@
 import React from "react";
 import Reviews from "./Reviews";
+import AddReview from "./AddReview";
 
 function WorkoutCard({ workout, addReview }) {
   return (
@@ -12,37 +13,9 @@ function WorkoutCard({ workout, addReview }) {
         addReview={addReview}
         workout={workout}
       />
-      {/* Follow pattern from petCard and Comments */}
-      {/* <Comments
-        pet={pet}
-        editComment={editComment}
-        deleteComment={deleteComment}
-      />
-      <AddComment pet={pet} addComment={addComment} /> */}
+      <AddReview addReview={addReview} workout={workout} />
     </>
   );
 }
 
 export default WorkoutCard;
-
-// {
-//     "id": 1,
-//     "title": "Bicep Blaster",
-//     "length": 45,
-//     "focus": "Upper body",
-//     "workout": "Concentration Curls 5 reps x 5 sets, Barbell Curls 5 reps x 5 sets, Hammer Curls 10 reps x 3 sets",
-//     "reviews": [
-//         {
-//             "id": 1,
-//             "comment": "Great workout!",
-//             "rating": 5,
-//             "workout_id": 1,
-//             "user_id": 1
-//         }
-//     ],
-//     "user": {
-//         "id": 1,
-//         "username": "jimmy",
-//         "password_digest": "$2a$12$nUMSbxVK91JNi1zwjCMgBOyuPyXYI8wILNYHV9kjl0yu276Gt7T5W"
-//     }
-// }

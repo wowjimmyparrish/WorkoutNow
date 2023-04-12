@@ -3,6 +3,7 @@ import { UserContext } from "../context/user";
 
 function AddReview({ addReview, workout }) {
   const { user } = useContext(UserContext);
+  const [errors, setErrors] = useState([]);
   const [data, setData] = useState({
     comment: "",
     user_id: user.id,
@@ -17,16 +18,18 @@ function AddReview({ addReview, workout }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("/reviews", requestOptions)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        addReview(data);
-        setData({ comment: "", workout_id: workout.id, user_id: user.id });
-      });
+    fetch("/reviews", requestOptions).then((response) => {
+      if (response.ok) {
+        response.json().then((data) => {
+          addReview(data);
+          setData({ comment: "", workout_id: workout.id, user_id: user.id });
+        });
+      } else {
+        response.json().then((errorData) => console.log(errorData.errors));
+        // setErrors(errorData.errors));
+      }
+    });
   }
-
   return (
     <div>
       <form className="comment-form">
@@ -46,6 +49,10 @@ function AddReview({ addReview, workout }) {
         <button type="submit" onClick={handleSubmit}>
           Submit
         </button>
+        {errors.map((error) => (
+          <h3 key={error}>{error}</h3>
+        ))}
+        <h3 style={{ color: "red" }}>{errors}</h3>
       </form>
     </div>
   );

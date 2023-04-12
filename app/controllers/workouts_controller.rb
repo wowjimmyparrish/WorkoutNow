@@ -4,12 +4,7 @@ class WorkoutsController < ApplicationController
     skip_before_action :authorize, only: [:index, :show]
 
     def index 
-        if params[:user_id]
-            user = find_user
-            workouts = user.workouts
-          else
           workouts = Workout.all
-          end
           render json: workouts, include: [:user, :reviews]
     end
 

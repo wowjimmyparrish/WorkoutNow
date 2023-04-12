@@ -47,6 +47,21 @@ function App() {
     });
   }
 
+  // function updateReview(updatedReview) {
+  //   setAllWorkouts((prevAllWorkouts) => {
+  //     return prevAllWorkouts.map((workout) => {
+  //       if (workout.id === newReview.workout_id) {
+  //         const filteredReviews = workout.reviews.filter(
+  //           (prevReview) => prevReview.id !== updatedReview.id
+  //         );
+
+  //         return { ...workout, reviews: [...filteredReviews, updatedReview] };
+  //       }
+  //       return workout;
+  //     });
+  //   });
+  // }
+
   return (
     <>
       <NavBar />

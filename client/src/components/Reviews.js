@@ -1,17 +1,15 @@
 import React from "react";
 import ReviewCard from "./ReviewCard";
-import AddReview from "./AddReview";
 
-function Reviews({ reviews, addReview, workout }) {
+function Reviews({ reviews }) {
   const reviewArray = reviews.map((review) => (
     <ReviewCard key={review.id} comment={review.comment} />
   ));
 
   return (
     <div id="review-list">
-      <h1>Review List</h1>
+      <h2>Review List</h2>
       <ul>{reviewArray}</ul>
-      <AddReview addReview={addReview} workout={workout} />
     </div>
   );
 }

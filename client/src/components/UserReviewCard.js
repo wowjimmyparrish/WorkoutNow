@@ -4,8 +4,10 @@ function UserReviewCard({ comment, workout }) {
   return (
     <>
       <p>{comment}</p>
-      <h3>Workouts</h3>
+      <h3>Workout:</h3>
       <p>-{workout}</p>
+      <button>Edit Comment</button>
+      <button>Delete Comment</button>
     </>
   );
 }
