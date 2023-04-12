@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
 
     def index 
           reviews = Review.all
-          render json: reviews, status: :ok, include: [:user, :workout]
+          render json: reviews, include: [:user, :workout], status: :ok
     end 
     
 

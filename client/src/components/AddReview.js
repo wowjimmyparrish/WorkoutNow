@@ -26,10 +26,9 @@ function AddReview({ addReview, workout }) {
         });
       } else {
         response.json().then((errorData) => {
-          console.log(errorData.errors);
           setErrors(errorData.errors.user_id);
           setData({ comment: "", workout_id: workout.id, user_id: user.id });
-          //setErrors(Object.keys(errorData.errors));
+          //this clears the input after errors
         });
       }
     });

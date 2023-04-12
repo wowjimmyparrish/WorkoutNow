@@ -5,7 +5,7 @@ class WorkoutsController < ApplicationController
 
     def index 
           workouts = Workout.all
-          render json: workouts, include: [:user, :reviews]
+          render json: workouts, include: [:user, :reviews], status: :ok
     end
 
     
