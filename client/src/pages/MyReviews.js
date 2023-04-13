@@ -11,7 +11,11 @@ function MyReviews() {
   }, []);
 
   const userReviewArray = userReviews.map((userReview) => (
-    <UserReviewCard key={userReview.id} comment={userReview.comment} />
+    <UserReviewCard
+      key={userReview.id}
+      comment={userReview.comment}
+      workout={userReview.workout.title}
+    />
   ));
   return (
     <>
