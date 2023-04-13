@@ -1,8 +1,12 @@
 import React from "react";
+import Search from "./Search";
 
-function WorkoutFilter({ allWorkouts }) {
+function WorkoutFilter({ allWorkouts, setSearch }) {
   console.log("From workoutFilter component", allWorkouts);
-  return <h1>This is the workout filter</h1>;
+  return (
+    <>
+      <Search setSearch={setSearch} />
+    </>
+  );
 }
-
 export default WorkoutFilter;

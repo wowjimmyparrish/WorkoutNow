@@ -8,7 +8,7 @@ function Reviews({ reviews }) {
 
   return (
     <div id="review-list">
-      <h2>Review List</h2>
+      <h2>Reviews</h2>
       <ul>{reviewArray}</ul>
     </div>
   );

@@ -8,7 +8,7 @@ function WorkoutList({ allWorkouts, addReview }) {
 
   return (
     <div id="workout-list">
-      <h1>Workout List</h1>
+      <h1>Workouts</h1>
       <ul>{workoutArray}</ul>
     </div>
   );

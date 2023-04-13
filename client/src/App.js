@@ -12,6 +12,7 @@ import { UserContext } from "./context/user";
 function App() {
   const { user, setUser } = useContext(UserContext);
   const [allWorkouts, setAllWorkouts] = useState([]);
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     fetch("/workouts")
@@ -61,6 +62,9 @@ function App() {
   //     });
   //   });
   // }
+  const displayWorkouts = allWorkouts.filter((workout) =>
+    workout.title.toLowerCase().includes(search.toLowerCase())
+  );
 
   return (
     <>
@@ -69,7 +73,12 @@ function App() {
       <main>
         <Switch>
           <Route exact path="/">
-            <Home allWorkouts={allWorkouts} addReview={addReview} />
+            <Home
+              allWorkouts={allWorkouts}
+              addReview={addReview}
+              workouts={displayWorkouts}
+              setSearch={setSearch}
+            />
           </Route>
           <Route path="/myworkouts">
             <MyWorkouts />
