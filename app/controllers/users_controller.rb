@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
     def show 
         user = User.find_by(id: session[:user_id]) 
+                                        # Logged in users created workouts an reviews with associated workout.  adapter: nil bypasses user serializer. 
         render json: user, include: [:created_workouts, :reviews => {:include => :workout} ], adapter: nil
     end
 

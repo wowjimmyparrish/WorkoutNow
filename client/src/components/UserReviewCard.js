@@ -3,11 +3,12 @@ import React from "react";
 function UserReviewCard({ comment, workout }) {
   return (
     <>
-      <p>{comment}</p>
       <h3>Workout:</h3>
       <p>{workout}</p>
-      <button>Edit Comment</button>
-      <button>Delete Comment</button>
+      <h3>Review:</h3>
+      <p>{comment}</p>
+      <button>Edit Review</button>
+      <button>Delete Review</button>
     </>
   );
 }

@@ -62,7 +62,7 @@ function App() {
   //     });
   //   });
   // }
-  const displayWorkouts = allWorkouts.filter((workout) =>
+  const filteredWorkouts = allWorkouts.filter((workout) =>
     workout.title.toLowerCase().includes(search.toLowerCase())
   );
 
@@ -76,7 +76,7 @@ function App() {
             <Home
               allWorkouts={allWorkouts}
               addReview={addReview}
-              workouts={displayWorkouts}
+              filteredWorkouts={filteredWorkouts}
               setSearch={setSearch}
             />
           </Route>
