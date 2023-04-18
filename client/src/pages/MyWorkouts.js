@@ -1,19 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import UserWorkoutCard from "../components/UserWorkoutCard";
-function MyWorkouts() {
-  const [userWorkouts, setUserWorkouts] = useState([]);
-
-  useEffect(() => {
-    fetch("/me")
-      .then((r) => r.json())
-      .then((data) => setUserWorkouts(data.created_workouts));
-  }, []);
-
+function MyWorkouts({ deleteWorkout, userWorkouts }) {
   const userWorkoutArray = userWorkouts.map((userWorkout) => (
     <UserWorkoutCard
       key={userWorkout.id}
       title={userWorkout.title}
-      workout={userWorkout.workout}
+      userWorkout={userWorkout.workout}
+      deleteWorkout={deleteWorkout}
+      workout={userWorkout}
     />
   ));
   return (

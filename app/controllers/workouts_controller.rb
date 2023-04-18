@@ -29,7 +29,7 @@ class WorkoutsController < ApplicationController
         workout = find_workout
         if workout
         workout.destroy 
-        head :no_content 
+       render json: {}
         else
             render json: { error: "Workout not found" }, status: :not_found 
         end

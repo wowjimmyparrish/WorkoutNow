@@ -8,11 +8,7 @@ function WorkoutCard({ workout, addReview }) {
       <h3>{workout.title}</h3>
       <p>{workout.workout}</p>
       {/* Fill out rest of workout data in JSX */}
-      <Reviews
-        reviews={workout.reviews}
-        addReview={addReview}
-        workout={workout}
-      />
+      <Reviews reviews={workout.reviews} addReview={addReview} />
       <AddReview addReview={addReview} workout={workout} />
     </>
   );

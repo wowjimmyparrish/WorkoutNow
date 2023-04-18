@@ -1,11 +1,7 @@
 import React from "react";
 import WorkoutCard from "./WorkoutCard";
 
-function WorkoutList({ allWorkouts, addReview, filteredWorkouts }) {
-  // const workoutArray = allWorkouts.map((workout) => (
-  //   <WorkoutCard key={workout.id} workout={workout} addReview={addReview} />
-  // ));
-
+function WorkoutList({ addReview, filteredWorkouts }) {
   const workoutArray = filteredWorkouts.map((workout) => (
     <WorkoutCard key={workout.id} workout={workout} addReview={addReview} />
   ));

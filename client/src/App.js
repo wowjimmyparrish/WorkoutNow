@@ -13,13 +13,16 @@ function App() {
   const { user, setUser } = useContext(UserContext);
   const [allWorkouts, setAllWorkouts] = useState([]);
   const [search, setSearch] = useState("");
+  const [userWorkouts, setUserWorkouts] = useState([]);
 
+  //fetching all workouts
   useEffect(() => {
     fetch("/workouts")
       .then((r) => r.json())
       .then((data) => setAllWorkouts(data));
   }, []);
 
+  //fetching user data
   useEffect(() => {
     fetch("/me").then((response) => {
       if (response.ok) {
@@ -27,10 +30,33 @@ function App() {
       }
     });
   }, [setUser]);
-  if (!user) return <Login />;
+
+  //fetching user workouts
+  useEffect(() => {
+    fetch("/me")
+      .then((r) => r.json())
+      .then((data) => setUserWorkouts(data.created_workouts));
+  }, []);
 
   function addWorkout(newWorkout) {
+    //updated all workouts for home page
     setAllWorkouts([...allWorkouts, newWorkout]);
+    //updated all user workouts for my workouts page
+    setUserWorkouts([...userWorkouts, newWorkout]);
+  }
+
+  function deleteWorkout(deletedWorkout) {
+    //update all workouts data
+    const updatedWorkouts = allWorkouts.filter(
+      (workout) => workout.id !== deletedWorkout.id
+    );
+    setAllWorkouts(updatedWorkouts);
+
+    //update my workouts data
+    const updatedUserWorkouts = userWorkouts.filter(
+      (workout) => workout.id !== deletedWorkout.id
+    );
+    setUserWorkouts(updatedUserWorkouts);
   }
 
   function addReview(newReview) {
@@ -48,24 +74,11 @@ function App() {
     });
   }
 
-  // function updateReview(updatedReview) {
-  //   setAllWorkouts((prevAllWorkouts) => {
-  //     return prevAllWorkouts.map((workout) => {
-  //       if (workout.id === newReview.workout_id) {
-  //         const filteredReviews = workout.reviews.filter(
-  //           (prevReview) => prevReview.id !== updatedReview.id
-  //         );
-
-  //         return { ...workout, reviews: [...filteredReviews, updatedReview] };
-  //       }
-  //       return workout;
-  //     });
-  //   });
-  // }
   const filteredWorkouts = allWorkouts.filter((workout) =>
     workout.title.toLowerCase().includes(search.toLowerCase())
   );
 
+  if (!user) return <Login />;
   return (
     <>
       <NavBar />
@@ -81,7 +94,10 @@ function App() {
             />
           </Route>
           <Route path="/myworkouts">
-            <MyWorkouts />
+            <MyWorkouts
+              deleteWorkout={deleteWorkout}
+              userWorkouts={userWorkouts}
+            />
           </Route>
           <Route path="/myreviews">
             <MyReviews />
