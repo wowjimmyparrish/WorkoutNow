@@ -1,20 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import UserReviewCard from "../components/UserReviewCard";
 
-function MyReviews() {
-  const [userReviews, setUserReviews] = useState([]);
-
-  useEffect(() => {
-    fetch("/me")
-      .then((r) => r.json())
-      .then((data) => setUserReviews(data.reviews));
-  }, []);
-
+function MyReviews({ deleteReview, userReviews }) {
   const userReviewArray = userReviews.map((userReview) => (
     <UserReviewCard
       key={userReview.id}
       comment={userReview.comment}
       workout={userReview.workout.title}
+      review={userReview}
+      deleteReview={deleteReview}
     />
   ));
   return (

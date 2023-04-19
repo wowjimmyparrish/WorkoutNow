@@ -33,7 +33,7 @@ class ReviewsController < ApplicationController
         review = find_review
         if review
         review.destroy 
-        head :no_content 
+        render json: {}
         else
             render json: { error: "Review not found" }, status: :not_found 
         end

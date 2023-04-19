@@ -14,6 +14,7 @@ function App() {
   const [allWorkouts, setAllWorkouts] = useState([]);
   const [search, setSearch] = useState("");
   const [userWorkouts, setUserWorkouts] = useState([]);
+  const [userReviews, setUserReviews] = useState([]);
 
   //fetching all workouts
   useEffect(() => {
@@ -31,11 +32,15 @@ function App() {
     });
   }, [setUser]);
 
-  //fetching user workouts
+  //fetching user workouts and user reviews
   useEffect(() => {
     fetch("/me")
       .then((r) => r.json())
-      .then((data) => setUserWorkouts(data.created_workouts));
+      .then((data) => {
+        console.log("data from /me", data);
+        setUserWorkouts(data.created_workouts);
+        setUserReviews(data.reviews);
+      });
   }, []);
 
   function addWorkout(newWorkout) {
@@ -60,7 +65,6 @@ function App() {
   }
 
   function addReview(newReview) {
-    console.log("newReview", newReview);
     setAllWorkouts((prevAllWorkouts) => {
       return prevAllWorkouts.map((workout) => {
         if (workout.id === newReview.workout_id) {
@@ -72,6 +76,51 @@ function App() {
         return workout;
       });
     });
+    setUserReviews([...userReviews, newReview]);
+  }
+
+  function deleteReview(deletedReview) {
+    //mapping through all workouts, if id matches deleted review id, then filter out deleted review
+    setAllWorkouts((prevAllWorkouts) => {
+      return prevAllWorkouts.map((workout) => {
+        if (workout.id === deletedReview.workout_id) {
+          const filteredReviews = workout.reviews.filter(
+            (prevReview) => prevReview.id !== deletedReview.id
+          );
+          return {
+            ...workout,
+            reviews: filteredReviews,
+          };
+        }
+        return workout;
+      });
+    });
+    //filtering user review array
+    const filterUserReviews = userReviews.filter(
+      (review) => review.id !== deletedReview.id
+    );
+    setUserReviews(filterUserReviews);
+  }
+
+  function editReview(editedReview) {
+    setAllWorkouts((prevAllWorkouts) => {
+      return prevAllWorkouts.map((workout) => {
+        if (workout.id === editedReview.workout_id) {
+          const filteredReviews = workout.reviews.filter(
+            (prevReview) => prevReview.id !== editedReview.id
+          );
+          return {
+            ...workout,
+            reviews: [...filteredReviews, editedReview],
+          };
+        }
+        return workout;
+      });
+    });
+    const filterUserReviews = userReviews.filter(
+      (review) => review.id !== editedReview.id
+    );
+    setUserReviews([...filterUserReviews, editedReview]);
   }
 
   const filteredWorkouts = allWorkouts.filter((workout) =>
@@ -100,7 +149,7 @@ function App() {
             />
           </Route>
           <Route path="/myreviews">
-            <MyReviews />
+            <MyReviews deleteReview={deleteReview} userReviews={userReviews} />
           </Route>
           <Route path="/createworkout">
             <CreateWorkout addWorkout={addWorkout} />
