@@ -37,7 +37,6 @@ function App() {
     fetch("/me")
       .then((r) => r.json())
       .then((data) => {
-        console.log("data from /me", data);
         setUserWorkouts(data.created_workouts);
         setUserReviews(data.reviews);
       });
@@ -102,7 +101,9 @@ function App() {
     setUserReviews(filterUserReviews);
   }
 
+  //editing reviews
   function editReview(editedReview) {
+    console.log("edited review", editedReview);
     setAllWorkouts((prevAllWorkouts) => {
       return prevAllWorkouts.map((workout) => {
         if (workout.id === editedReview.workout_id) {
@@ -149,7 +150,11 @@ function App() {
             />
           </Route>
           <Route path="/myreviews">
-            <MyReviews deleteReview={deleteReview} userReviews={userReviews} />
+            <MyReviews
+              deleteReview={deleteReview}
+              userReviews={userReviews}
+              editReview={editReview}
+            />
           </Route>
           <Route path="/createworkout">
             <CreateWorkout addWorkout={addWorkout} />

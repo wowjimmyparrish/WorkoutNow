@@ -1,14 +1,14 @@
 import React from "react";
 import UserReviewCard from "../components/UserReviewCard";
 
-function MyReviews({ deleteReview, userReviews }) {
+function MyReviews({ deleteReview, userReviews, editReview }) {
   const userReviewArray = userReviews.map((userReview) => (
     <UserReviewCard
       key={userReview.id}
-      comment={userReview.comment}
       workout={userReview.workout.title}
       review={userReview}
       deleteReview={deleteReview}
+      editReview={editReview}
     />
   ));
   return (
