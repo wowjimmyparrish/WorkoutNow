@@ -35,9 +35,9 @@ function CreateWorkout({ addWorkout }) {
       <h1>CREATE WORKOUT</h1>
       <hr></hr>
       <p>Please submit information below</p>
-      <form className="pet-form">
+      <form className="form">
         <input
-          className="pet-input"
+          className="workout-input"
           type="text"
           placeholder="title"
           value={data.title}
@@ -45,7 +45,7 @@ function CreateWorkout({ addWorkout }) {
           onChange={(e) => setData({ ...data, title: e.target.value })}
         ></input>
         <input
-          className="pet-input"
+          className="workout-input"
           type="text"
           placeholder="focus"
           value={data.focus}
@@ -53,7 +53,7 @@ function CreateWorkout({ addWorkout }) {
           onChange={(e) => setData({ ...data, focus: e.target.value })}
         ></input>
         <input
-          className="pet-input"
+          className="workout-input"
           type="text"
           placeholder="length"
           value={data.length}
@@ -61,7 +61,7 @@ function CreateWorkout({ addWorkout }) {
           onChange={(e) => setData({ ...data, length: e.target.value })}
         ></input>
         <input
-          className="pet-input"
+          className="workout-input"
           type="text"
           placeholder="workout"
           value={data.workout}

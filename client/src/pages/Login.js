@@ -13,7 +13,12 @@ function Login() {
           <LoginForm />
           <p>
             Don't have an account?
-            <button onClick={() => setShowLogin(false)}>Sign Up</button>
+            <button
+              className="btn btn-primary"
+              onClick={() => setShowLogin(false)}
+            >
+              Sign Up
+            </button>
           </p>
         </>
       ) : (
