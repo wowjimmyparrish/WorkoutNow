@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
         user = User.find_by(username: params[:username])
         if user&.authenticate(params[:password])
             session[:user_id] = user.id
-            render json: user, status: :created
+            render json: user, include: [:created_workouts, :reviews => {:include => :workout} ], adapter: nil
         else 
             render json: {error: "Please use valid username and/or password"}, status: :unauthorized 
         end

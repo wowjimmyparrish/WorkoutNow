@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/user";
 
-function LoginForm() {
+function LoginForm({ setUserWorkouts, setUserReviews }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
@@ -17,7 +17,11 @@ function LoginForm() {
       body: JSON.stringify({ username, password }),
     }).then((r) => {
       if (r.ok) {
-        r.json().then((user) => setUser(user));
+        r.json().then((user) => {
+          setUserWorkouts(user.created_workouts);
+          setUserReviews(user.reviews);
+          setUser(user);
+        });
       } else {
         r.json().then((errorData) => setErrors(errorData.error));
       }

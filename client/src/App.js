@@ -126,7 +126,13 @@ function App() {
     workout.title.toLowerCase().includes(search.toLowerCase())
   );
 
-  if (!user) return <Login />;
+  if (!user)
+    return (
+      <Login
+        setUserWorkouts={setUserWorkouts}
+        setUserReviews={setUserReviews}
+      />
+    );
   return (
     <>
       <NavBar />
