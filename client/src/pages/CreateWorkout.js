@@ -32,9 +32,9 @@ function CreateWorkout({ addWorkout }) {
 
   return (
     <div>
-      <h1>CREATE WORKOUT</h1>
+      <h2 className="text-center">CREATE WORKOUT</h2>
       <hr></hr>
-      <p>Please submit information below</p>
+      <p className="text-center">Please submit information below</p>
       <form className="d-flex align-items-center justify-content-center flex-column">
         <input
           className="my-2"
@@ -58,7 +58,7 @@ function CreateWorkout({ addWorkout }) {
           className="my-2"
           style={{ width: "50%" }}
           type="text"
-          placeholder="Length: (Minutes)"
+          placeholder="Length: (In Minutes 45, 60, 90, or 120)"
           value={data.length}
           required
           onChange={(e) => setData({ ...data, length: e.target.value })}

@@ -16,10 +16,18 @@ function NavBar() {
   return (
     <div className="nav justify-content-end">
       <div className="navbar">
-        <NavLink to="/">Home </NavLink>
-        <NavLink to="/myworkouts">My Workouts </NavLink>
-        <NavLink to="/myreviews">My Reviews</NavLink>
-        <NavLink to="/createworkout">Create Workout</NavLink>
+        <NavLink className="p-4 fs-3" to="/">
+          Home{" "}
+        </NavLink>
+        <NavLink className="p-4 fs-3" to="/myworkouts">
+          My Workouts{" "}
+        </NavLink>
+        <NavLink className="p-4 fs-3" to="/myreviews">
+          My Reviews
+        </NavLink>
+        <NavLink className="p-4 fs-3" to="/createworkout">
+          Create Workout
+        </NavLink>
         <button className="btn btn-primary" onClick={handleLogoutClick}>
           Logout
         </button>

@@ -9,11 +9,10 @@ function Search({ setSearch }) {
   }
 
   return (
-    <form className="searchbar" onSubmit={handleSubmit}>
+    <form className="mt-2" onSubmit={handleSubmit}>
       <input
         type="text"
-        id="search"
-        placeholder="Search"
+        placeholder="Search workouts"
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />

@@ -17,13 +17,17 @@ function UserWorkoutCard({ userWorkout, title, deleteWorkout, workout }) {
   }
 
   return (
-    <>
-      <h2>{title}</h2>
+    <div className="card p-4 m-4">
+      <h3>{title}</h3>
       <p>{userWorkout}</p>
-      <button onClick={handleDelete} type="submit">
+      <button
+        className="btn btn-primary m-2"
+        onClick={handleDelete}
+        type="submit"
+      >
         Delete Workout
       </button>
-    </>
+    </div>
   );
 }
 

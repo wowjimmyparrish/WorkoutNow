@@ -9,7 +9,6 @@ function WorkoutCard({ workout, addReview }) {
       <h6>Focus: {workout.focus}</h6>
       <h6>Length in minutes: {workout.length}</h6>
       <h6 className="mb-2">Workout: {workout.workout}</h6>
-      {/* Fill out rest of workout data in JSX */}
       <Reviews reviews={workout.reviews} addReview={addReview} />
       <AddReview addReview={addReview} workout={workout} />
     </div>

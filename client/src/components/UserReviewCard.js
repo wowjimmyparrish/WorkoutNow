@@ -51,7 +51,7 @@ function UserReviewCard({ workout, review, deleteReview, editReview }) {
   }
 
   return (
-    <>
+    <div className="card p-4 m-4">
       <h3>Workout:</h3>
       <p>{workout}</p>
       <h3>Review:</h3>
@@ -86,7 +86,7 @@ function UserReviewCard({ workout, review, deleteReview, editReview }) {
           </button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
 
