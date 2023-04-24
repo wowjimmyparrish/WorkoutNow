@@ -7,8 +7,8 @@ function Reviews({ reviews }) {
   ));
 
   return (
-    <div id="review-list">
-      <h2>Reviews</h2>
+    <div id="review-list" className="mt-4">
+      <h5>Reviews:</h5>
       <ul>{reviewArray}</ul>
     </div>
   );

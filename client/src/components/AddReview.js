@@ -53,10 +53,9 @@ function AddReview({ addReview, workout }) {
           Submit
         </button>
         {errors.map((error) => (
-          // <h3 key={error}>{error}</h3>
-          <h3 key={error} style={{ color: "red" }}>
+          <p key={error} style={{ color: "red" }}>
             {error}
-          </h3>
+          </p>
         ))}
       </form>
     </div>

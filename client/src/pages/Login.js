@@ -7,14 +7,18 @@ function Login() {
 
   return (
     <div>
-      <h1>Workout Finder</h1>
+      <h1 className="text-center">Workout Finder</h1>
+      <br></br>
+      <br></br>
+      <br></br>
       {showLogin ? (
         <>
           <LoginForm />
-          <p>
+          <br></br>
+          <p className="d-flex justify-content-center align-items-center">
             Don't have an account?
             <button
-              className="btn btn-primary"
+              className="btn btn-primary m-2"
               onClick={() => setShowLogin(false)}
             >
               Sign Up
@@ -24,9 +28,14 @@ function Login() {
       ) : (
         <>
           <SignUpForm />
-          <p>
+          <p className="d-flex justify-content-center align-items-center">
             Already have an account?
-            <button onClick={() => setShowLogin(true)}>Log In</button>
+            <button
+              className="btn btn-primary m-2"
+              onClick={() => setShowLogin(true)}
+            >
+              Log In
+            </button>
           </p>
         </>
       )}

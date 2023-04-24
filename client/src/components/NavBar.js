@@ -5,6 +5,7 @@ import { NavLink } from "react-router-dom";
 
 function NavBar() {
   const { setUser } = useContext(UserContext);
+
   function handleLogoutClick() {
     fetch("/logout", { method: "DELETE" }).then((r) => {
       if (r.ok) {
@@ -13,13 +14,15 @@ function NavBar() {
     });
   }
   return (
-    <div>
+    <div className="nav justify-content-end">
       <div className="navbar">
         <NavLink to="/">Home </NavLink>
         <NavLink to="/myworkouts">My Workouts </NavLink>
         <NavLink to="/myreviews">My Reviews</NavLink>
         <NavLink to="/createworkout">Create Workout</NavLink>
-        <button onClick={handleLogoutClick}>Logout</button>
+        <button className="btn btn-primary" onClick={handleLogoutClick}>
+          Logout
+        </button>
       </div>
     </div>
   );

@@ -25,7 +25,7 @@ function CreateWorkout({ addWorkout }) {
       if (r.ok) {
         r.json().then((data) => addWorkout(data), history.push("/"));
       } else {
-        r.json().then((errorData) => setErrors(errorData.error));
+        r.json().then((errorData) => setErrors(errorData.errors));
       }
     });
   }
@@ -35,44 +35,58 @@ function CreateWorkout({ addWorkout }) {
       <h1>CREATE WORKOUT</h1>
       <hr></hr>
       <p>Please submit information below</p>
-      <form className="form">
+      <form className="d-flex align-items-center justify-content-center flex-column">
         <input
-          className="workout-input"
+          className="my-2"
+          style={{ width: "50%" }}
           type="text"
-          placeholder="title"
+          placeholder="Title"
           value={data.title}
           required
           onChange={(e) => setData({ ...data, title: e.target.value })}
         ></input>
         <input
-          className="workout-input"
+          className="my-2"
+          style={{ width: "50%" }}
           type="text"
-          placeholder="focus"
+          placeholder="Focus: (Upper body, Lower body, etc)"
           value={data.focus}
           required
           onChange={(e) => setData({ ...data, focus: e.target.value })}
         ></input>
         <input
-          className="workout-input"
+          className="my-2"
+          style={{ width: "50%" }}
           type="text"
-          placeholder="length"
+          placeholder="Length: (Minutes)"
           value={data.length}
           required
           onChange={(e) => setData({ ...data, length: e.target.value })}
         ></input>
-        <input
-          className="workout-input"
+        <textarea
+          className="my-2"
+          style={{ width: "80%" }}
           type="text"
-          placeholder="workout"
+          placeholder="Workout"
           value={data.workout}
           required
           onChange={(e) => setData({ ...data, workout: e.target.value })}
-        ></input>
+        ></textarea>
         <br></br>
-        <button onClick={handleSubmit} type="submit">
+        <button
+          onClick={handleSubmit}
+          type="submit"
+          className="btn btn-primary"
+        >
           Submit Now
         </button>
-        <h3 style={{ color: "red" }}>{errors}</h3>
+        {errors.length > 0 && (
+          <ul style={{ color: "red" }}>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
+        )}
       </form>
     </div>
   );

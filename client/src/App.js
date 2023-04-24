@@ -16,6 +16,19 @@ function App() {
   const [userWorkouts, setUserWorkouts] = useState([]);
   const [userReviews, setUserReviews] = useState([]);
 
+  // fetching user data
+  useEffect(() => {
+    fetch("/me").then((response) => {
+      if (response.ok) {
+        response.json().then((user) => {
+          setUser(user);
+          setUserWorkouts(user.created_workouts);
+          setUserReviews(user.reviews);
+        });
+      }
+    });
+  }, [setUser]);
+
   //fetching all workouts
   useEffect(() => {
     fetch("/workouts")
@@ -23,24 +36,9 @@ function App() {
       .then((data) => setAllWorkouts(data));
   }, []);
 
-  //fetching user data
-  useEffect(() => {
-    fetch("/me").then((response) => {
-      if (response.ok) {
-        response.json().then((user) => setUser(user));
-      }
-    });
-  }, [setUser]);
-
-  //fetching user workouts and user reviews
-  useEffect(() => {
-    fetch("/me")
-      .then((r) => r.json())
-      .then((data) => {
-        setUserWorkouts(data.created_workouts);
-        setUserReviews(data.reviews);
-      });
-  }, []);
+  console.log(user);
+  console.log(userWorkouts);
+  console.log(userReviews);
 
   function addWorkout(newWorkout) {
     //updated all workouts for home page

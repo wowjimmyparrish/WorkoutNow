@@ -24,17 +24,22 @@ function LoginForm() {
     });
   }
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Username</h1>
+    <form
+      className="d-flex justify-content-center flex-column align-items-center"
+      onSubmit={handleSubmit}
+    >
+      <h5>Username</h5>
       <input
+        className="m-2"
         type="text"
         id="username"
         autoComplete="off"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
-      <h1>Password</h1>
+      <h5>Password</h5>
       <input
+        className="m-2"
         type="password"
         id="password"
         autoComplete="current-password"
@@ -42,8 +47,10 @@ function LoginForm() {
         onChange={(e) => setPassword(e.target.value)}
       />
 
-      <button type="submit">Login</button>
-      <h3 style={{ color: "red" }}>{errors}</h3>
+      <button className="btn btn-primary m-2" type="submit">
+        Login
+      </button>
+      <p style={{ color: "red" }}>{errors}</p>
     </form>
   );
 }

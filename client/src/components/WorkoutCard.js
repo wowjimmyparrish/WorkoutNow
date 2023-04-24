@@ -4,13 +4,15 @@ import AddReview from "./AddReview";
 
 function WorkoutCard({ workout, addReview }) {
   return (
-    <>
+    <div className="card p-4 m-4">
       <h3>{workout.title}</h3>
-      <p>{workout.workout}</p>
+      <h6>Focus: {workout.focus}</h6>
+      <h6>Length in minutes: {workout.length}</h6>
+      <h6 className="mb-2">Workout: {workout.workout}</h6>
       {/* Fill out rest of workout data in JSX */}
       <Reviews reviews={workout.reviews} addReview={addReview} />
       <AddReview addReview={addReview} workout={workout} />
-    </>
+    </div>
   );
 }
 
