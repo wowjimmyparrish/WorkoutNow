@@ -9,7 +9,7 @@ function Search({ setSearch }) {
   }
 
   return (
-    <form className="mt-2" onSubmit={handleSubmit}>
+    <form className="p-4 fs-5" onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Search workouts"

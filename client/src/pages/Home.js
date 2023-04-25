@@ -1,11 +1,9 @@
 import React from "react";
-import WorkoutFilter from "../components/WorkoutFilter";
 import WorkoutList from "../components/WorkoutList";
 
-function Home({ allWorkouts, addReview, filteredWorkouts, setSearch }) {
+function Home({ allWorkouts, addReview, filteredWorkouts }) {
   return (
     <>
-      <WorkoutFilter setSearch={setSearch} />
       <WorkoutList
         allWorkouts={allWorkouts}
         addReview={addReview}

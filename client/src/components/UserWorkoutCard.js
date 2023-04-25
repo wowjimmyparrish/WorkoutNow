@@ -20,13 +20,11 @@ function UserWorkoutCard({ userWorkout, title, deleteWorkout, workout }) {
     <div className="card p-4 m-4">
       <h3>{title}</h3>
       <p>{userWorkout}</p>
-      <button
-        className="btn btn-primary m-2"
-        onClick={handleDelete}
-        type="submit"
-      >
-        Delete Workout
-      </button>
+      <div>
+        <button className="btn btn-danger" onClick={handleDelete} type="submit">
+          Delete
+        </button>
+      </div>
     </div>
   );
 }

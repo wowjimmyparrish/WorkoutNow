@@ -76,12 +76,17 @@ function UserReviewCard({ workout, review, deleteReview, editReview }) {
         )}
         <div>
           <button
+            className="btn btn-primary m-2"
             type="submit"
             onClick={edit ? handleEditClick : handleSaveClick}
           >
             {edit ? "Edit" : "Save"}
           </button>
-          <button type="submit" onClick={handleDelete}>
+          <button
+            className="btn btn-danger m-2"
+            type="submit"
+            onClick={handleDelete}
+          >
             Delete
           </button>
         </div>

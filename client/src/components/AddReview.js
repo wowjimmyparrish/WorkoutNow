@@ -39,7 +39,7 @@ function AddReview({ addReview, workout }) {
         <input
           className="input"
           type="text"
-          placeholder="Comment"
+          placeholder="Review"
           value={data.comment}
           onChange={(e) =>
             setData({
@@ -49,7 +49,12 @@ function AddReview({ addReview, workout }) {
             })
           }
         ></input>
-        <button type="submit" disabled={!data.comment} onClick={handleSubmit}>
+        <button
+          className="btn btn-primary m-2"
+          type="submit"
+          disabled={!data.comment}
+          onClick={handleSubmit}
+        >
           Submit
         </button>
         {errors.map((error) => (

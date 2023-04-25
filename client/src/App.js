@@ -135,8 +135,8 @@ function App() {
     );
   return (
     <>
-      <NavBar />
-      <h2>Welcome, {user.username}!</h2>
+      <NavBar setSearch={setSearch} user={user} />
+
       <main>
         <Switch>
           <Route exact path="/">
@@ -144,7 +144,6 @@ function App() {
               allWorkouts={allWorkouts}
               addReview={addReview}
               filteredWorkouts={filteredWorkouts}
-              setSearch={setSearch}
             />
           </Route>
           <Route path="/myworkouts">
