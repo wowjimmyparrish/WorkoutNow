@@ -1,11 +1,15 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 function Search({ setSearch }) {
   const [value, setValue] = useState("");
 
+  const history = useHistory();
+
   function handleSubmit(e) {
     e.preventDefault();
     setSearch(value);
+    history.push("/");
   }
 
   return (

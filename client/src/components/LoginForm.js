@@ -1,11 +1,14 @@
 import React, { useState, useContext } from "react";
 import { UserContext } from "../context/user";
+import { useHistory } from "react-router-dom";
 
 function LoginForm({ setUserWorkouts, setUserReviews }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const { setUser } = useContext(UserContext);
+
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -21,6 +24,7 @@ function LoginForm({ setUserWorkouts, setUserReviews }) {
           setUserWorkouts(user.created_workouts);
           setUserReviews(user.reviews);
           setUser(user);
+          history.push("/");
         });
       } else {
         r.json().then((errorData) => setErrors(errorData.error));

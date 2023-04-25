@@ -36,10 +36,6 @@ function App() {
       .then((data) => setAllWorkouts(data));
   }, []);
 
-  console.log(user);
-  console.log(userWorkouts);
-  console.log(userReviews);
-
   function addWorkout(newWorkout) {
     //updated all workouts for home page
     setAllWorkouts([...allWorkouts, newWorkout]);
@@ -101,7 +97,6 @@ function App() {
 
   //editing reviews
   function editReview(editedReview) {
-    console.log("edited review", editedReview);
     setAllWorkouts((prevAllWorkouts) => {
       return prevAllWorkouts.map((workout) => {
         if (workout.id === editedReview.workout_id) {
