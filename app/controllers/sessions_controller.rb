@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
             session[:user_id] = user.id
             render json: user, include: [:created_workouts, :reviews => {:include => :workout} ], adapter: nil
         else 
-            render json: {error: "Please use valid username and/or password"}, status: :unauthorized 
+            render json: {error: "Wrong username/password. Please try again!"}, status: :unauthorized 
         end
     end
 

@@ -5,13 +5,19 @@ function WorkoutList({ addReview, filteredWorkouts }) {
   const workoutArray = filteredWorkouts.map((workout) => (
     <WorkoutCard key={workout.id} workout={workout} addReview={addReview} />
   ));
-
-  return (
-    <div id="workout-list">
-      <h1 className="text-center">Workouts</h1>
-      <ul>{workoutArray}</ul>
-    </div>
-  );
+  if (workoutArray.length === 0) {
+    return (
+      <div className="card p-4 m-4">
+        <h2 className="m-auto text-danger">Workout not found</h2>
+      </div>
+    );
+  } else
+    return (
+      <div id="workout-list">
+        <h1 className="text-center">Workouts</h1>
+        <ul>{workoutArray}</ul>
+      </div>
+    );
 }
 
 export default WorkoutList;
