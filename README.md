@@ -4,11 +4,11 @@ Workout Finder is a full stack application where a logged in user can view, sear
 
 ## Built With
 
-*Ruby
-*Rails
-*React
-*JavaScript
-\*CSS
+- Ruby
+- Rails
+- React
+- JavaScript
+- CSS
 
 ## Installation Instructions
 
