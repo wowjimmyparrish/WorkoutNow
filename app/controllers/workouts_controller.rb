@@ -19,27 +19,26 @@ class WorkoutsController < ApplicationController
     end 
     
     def create 
-        workout = Workout.create!(workout_params) 
+        workout = user.created_workouts.create!(workout_params) 
         render json: workout, status: :created 
     end
         
     
-
     def destroy 
         workout = find_workout
-        if workout
-        workout.destroy 
-       render json: {}
+      
+        if workout && workout.user_id == session[:user_id]
+          workout.destroy 
+          render json: {}
+        elsif workout.nil?
+          render json: { error: "Workout not found" }, status: :not_found
         else
-            render json: { error: "Workout not found" }, status: :not_found 
+          render json: { error: "Unauthorized" }, status: :unauthorized
         end
-    end
+      end
+
 
         private 
-
-        def find_user
-            User.find_by(id: params[:user_id]) 
-          end 
         
 
         def find_workout
@@ -47,7 +46,7 @@ class WorkoutsController < ApplicationController
         end
 
         def workout_params 
-            params.permit(:title, :length, :workout, :focus, :user_id)
+            params.permit(:title, :length, :workout, :focus)
         end
 
         def render_unprocessable_entity_response(invalid)
