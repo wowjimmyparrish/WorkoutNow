@@ -19,7 +19,7 @@ Rails.application.routes.draw do
  get "/me", to: "users#show"
  post "/login", to: "sessions#create"
  delete "/logout", to: "sessions#destroy"
- 
+ get "/workouts/review_length/:n", to: "workouts#review_length"
   
   
   # Routing logic: fallback requests for React Router.

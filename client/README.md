@@ -1,6 +1,6 @@
 # Description
 
-Workout Finder is a full stack application where a logged in user can view, search, review, and create workouts.
+WorkoutNow is a full stack application where a logged in user can view, search, review, and create workouts.
 
 ## Built With
 

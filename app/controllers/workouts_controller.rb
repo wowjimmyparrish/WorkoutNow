@@ -1,7 +1,7 @@
 class WorkoutsController < ApplicationController
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
     before_action :authorize
-    skip_before_action :authorize, only: [:index, :show]
+    skip_before_action :authorize, only: [:index, :show, :review_length]
 
     def index 
           workouts = Workout.all
@@ -37,6 +37,11 @@ class WorkoutsController < ApplicationController
         end
       end
 
+      def review_length
+        n = params[:n].to_i
+        workouts = Workout.all.filter{|workout| workout.reviews.count >= n}
+      render json: workouts
+      end
 
         private 
         

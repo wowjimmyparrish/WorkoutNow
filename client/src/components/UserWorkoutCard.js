@@ -17,7 +17,7 @@ function UserWorkoutCard({ userWorkout, title, deleteWorkout, workout }) {
   }
 
   return (
-    <div className="card p-4 m-4">
+    <div className="card p-4 m-4 border-black">
       <h3>{title}</h3>
       <p>{userWorkout}</p>
       <div>

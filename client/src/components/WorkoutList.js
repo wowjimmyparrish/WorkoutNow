@@ -14,7 +14,7 @@ function WorkoutList({ addReview, filteredWorkouts }) {
   } else
     return (
       <div id="workout-list">
-        <h1 className="text-center">Workouts</h1>
+        <h1 className="text-center fw-bolder">Workouts</h1>
         <ul>{workoutArray}</ul>
       </div>
     );

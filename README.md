@@ -1,6 +1,6 @@
 # Description
 
-Workout Finder is a full stack application where a logged in user can view, search, review, and create workouts.
+WorkoutNow is a full stack application where a logged in user can view, search, review, and create workouts.
 
 ## Built With
 
@@ -13,9 +13,6 @@ Workout Finder is a full stack application where a logged in user can view, sear
 ## Installation Instructions
 
 Fork and Clone this repository. Install the npm packages and gems in the project folder with : npm install and bundle install. To run the application, in the console type: rails s to start the server. Then, in a separate console, type npm start --prefix client to run the front end and view the browser.
-
-Deployed project here:
-https://workout-app-sqka.onrender.com
 
 ## Executing Program
 

@@ -1,13 +1,13 @@
 import { useState } from "react";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
-
+import "../index.css";
 function Login({ setUserWorkouts, setUserReviews }) {
   const [showLogin, setShowLogin] = useState(true);
 
   return (
     <div>
-      <h1 className="text-center">Workout Finder</h1>
+      <h1 className="text-center mt-5 fw-bolder">WorkoutNow</h1>
       <br></br>
       <br></br>
       <br></br>

@@ -15,12 +15,12 @@ function NavBar({ setSearch, user }) {
     });
   }
   return (
-    <div className="nav justify-content-end">
-      <h2 className="fs-4 position-absolute top-0 start-0 mt-2 ms-2">
+    <div className="nav justify-content-end ">
+      <h2 className="fs-4 position-absolute top-0 start-0 mt-2 ms-2 fst-italic">
         Welcome, {user.username}!
       </h2>
       <div className="navbar">
-        <NavLink className="p-4 fs-5" to="/">
+        <NavLink className="p-4 fs-5 " to="/">
           Home{" "}
         </NavLink>
         <NavLink className="p-4 fs-5" to="/myworkouts">
