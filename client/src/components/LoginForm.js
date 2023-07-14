@@ -36,18 +36,18 @@ function LoginForm({ setUserWorkouts, setUserReviews }) {
       className="d-flex justify-content-center flex-column align-items-center"
       onSubmit={handleSubmit}
     >
-      <h5>Username</h5>
+      <h5 className="text-white">Username</h5>
       <input
-        className="m-2"
+        className="m-1"
         type="text"
         id="username"
         autoComplete="off"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
       />
-      <h5>Password</h5>
+      <h5 className="text-white">Password</h5>
       <input
-        className="m-2"
+        className="m-1"
         type="password"
         id="password"
         autoComplete="current-password"

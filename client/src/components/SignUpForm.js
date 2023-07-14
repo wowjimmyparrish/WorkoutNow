@@ -31,7 +31,7 @@ function SignUpForm() {
 
   return (
     <form
-      className="d-flex justify-content-center align-items-center flex-column m-2"
+      className="d-flex justify-content-center align-items-center flex-column m-2 text-white"
       onSubmit={handleSubmit}
     >
       <h5 htmlFor="username">Username: </h5>

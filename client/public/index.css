@@ -1,0 +1,8 @@
+.login-page {
+  background-image: url("workoutnow.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100vh;
+  position: relative;
+  height: max-content;
+}
