@@ -1,7 +1,6 @@
 import { useState } from "react";
 import LoginForm from "../components/LoginForm";
 import SignUpForm from "../components/SignUpForm";
-import "../index.css";
 function Login({ setUserWorkouts, setUserReviews }) {
   const [showLogin, setShowLogin] = useState(true);
 
